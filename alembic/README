@@ -1,1 +1,68 @@
 Generic single-database configuration.
+
+## Restaurants, Reviews, and Ratings
+This project implements a basic system to manage restaurants, customers, and their reviews. It uses SQLAlchemy to interact with a database to store information about restaurants, customers, and reviews they make.
+
+Features
+Models
+
+Restaurant: Stores information about restaurants including their names, prices, and reviews.
+Customer: Represents customers and their reviews.
+Review: Connects restaurants and customers by storing the review details and ratings.
+Functionalities
+
+Adding Data: Allows the addition of restaurants, customers, and reviews to the database.
+Querying Data: Provides querying capabilities to retrieve and display stored information.
+Installation
+To run this project locally, follow these steps:
+
+Clone the Repository
+
+bash
+Copy code
+git clone https://github.com/clairwanjiku/Restaurants-Reviews-and-Ratings
+cd Restaurants-Reviews-and-Ratings
+Install Dependencies
+
+Copy code
+pip install -r requirements.txt
+Set Up the Database
+
+Replace your_database_url in main.py with your actual database URL.
+Run python3 lib/main.py to create tables and populate the database with sample data.
+Usage
+Adding Data
+
+Modify the main.py file to add your own restaurants, customers, and reviews.
+Run python3 lib/main.py to add this data to the database.
+Fetching and Printing Information
+
+Modify main.py queries to fetch and print specific information from the database.
+Example queries are included in the code to guide you on retrieving data.
+Database Structure
+The project uses the following database structure:
+
+restaurants
+
+id (Integer, Primary Key): Unique identifier for each restaurant.
+name (String): Name of the restaurant.
+price (Integer): Price range of the restaurant.
+customers
+
+id (Integer, Primary Key): Unique identifier for each customer.
+first_name (String): First name of the customer.
+last_name (String): Last name of the customer.
+reviews
+
+id (Integer, Primary Key): Unique identifier for each review.
+star_rating (Integer): Rating given by the customer in the review.
+restaurant_id (Integer, Foreign Key): References the id column in restaurants.
+customer_id (Integer, Foreign Key): References the id column in customers.
+Sample Output
+Running the provided sample code will display reviews with detailed information including restaurant IDs, prices, customer IDs, and star ratings.
+Contribution
+Contributions to this project are welcomed! Feel free to raise issues or submit pull requests for any improvements or bug fixes.
+
+
+aurthor
+clair karanja

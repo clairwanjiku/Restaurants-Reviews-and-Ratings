@@ -38,19 +38,15 @@ session.commit()
 # Print information from the tables with headers
 print("\n--- Restaurants ---")
 restaurants = session.query(Restaurant).all()
-restaurants_data = [[r.id, r.name, r.price] for r in restaurants]
-print(tabulate(restaurants_data, headers=["ID", "Name", "Price"]))
+print(tabulate([[r.id, r.name, r.price] for r in restaurants], headers=["ID", "Name", "Price"]))
 
 print("\n--- Customers ---")
 customers = session.query(Customer).all()
-customers_data = [[c.id, c.first_name, c.last_name] for c in customers]
-print(tabulate(customers_data, headers=["ID", "First Name", "Last Name"]))
+print(tabulate([[c.id, c.first_name, c.last_name] for c in customers], headers=["ID", "First Name", "Last Name"]))
 
 print("\n--- Reviews ---")
 reviews = session.query(Review).all()
-reviews_data = [[r.id, r.star_rating, r.restaurant.name, r.customer.first_name, r.customer.last_name] for r in reviews]
-print(tabulate(reviews_data, headers=["ID", "Rating", "Restaurant Name", "First Name", "Last Name"]))
+print(tabulate([[r.id, r.star_rating, r.restaurant.name, r.customer.first_name, r.customer.last_name] for r in reviews], headers=["ID", "Rating", "Restaurant Name", "First Name", "Last Name"]))
 
 # Close the session
 session.close()
-

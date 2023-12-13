@@ -1,7 +1,6 @@
-
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from models import Base, Restaurant, Customer, Review
+from models import Base, Restaurant, Customer, Review  # Import your models
 
 # Database connection setup
 engine = create_engine('sqlite:///restaurant_reviews.db')

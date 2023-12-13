@@ -1,6 +1,7 @@
+from tabulate import tabulate
+from models import Base, Restaurant, Customer, Review
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from models import Base, Restaurant, Customer, Review  # Import your models
 
 # Database connection setup
 engine = create_engine('sqlite:///restaurant_reviews.db')
@@ -36,22 +37,19 @@ session.commit()
 
 # Print information from the tables with headers
 print("\n--- Restaurants ---")
-print("ID\tName\tPrice")
 restaurants = session.query(Restaurant).all()
-for restaurant in restaurants:
-    print(f"{restaurant.id}\t{restaurant.name}\t{restaurant.price}")
+restaurants_data = [[r.id, r.name, r.price] for r in restaurants]
+print(tabulate(restaurants_data, headers=["ID", "Name", "Price"]))
 
 print("\n--- Customers ---")
-print("ID\tFirst Name\tLast Name")
 customers = session.query(Customer).all()
-for customer in customers:
-    print(f"{customer.id}\t{customer.first_name}\t{customer.last_name}")
+customers_data = [[c.id, c.first_name, c.last_name] for c in customers]
+print(tabulate(customers_data, headers=["ID", "First Name", "Last Name"]))
 
 print("\n--- Reviews ---")
-print("ID\tRating\tRestaurant Name\tFirst Name\tLast Name")
 reviews = session.query(Review).all()
-for review in reviews:
-    print(f"{review.id}\t{review.star_rating}\t{review.restaurant.name}\t{review.customer.first_name}\t{review.customer.last_name}")
+reviews_data = [[r.id, r.star_rating, r.restaurant.name, r.customer.first_name, r.customer.last_name] for r in reviews]
+print(tabulate(reviews_data, headers=["ID", "Rating", "Restaurant Name", "First Name", "Last Name"]))
 
 # Close the session
 session.close()
